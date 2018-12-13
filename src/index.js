@@ -18,7 +18,7 @@ $(document).ready(() => {
         if(view === 'login') {
             window.data = {};
         }else if(view === '') {
-            location.hash = 'login'
+            view = 'login'
         }
         const viewList = view.split('/');
         let obj = views;

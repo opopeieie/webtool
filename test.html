@@ -1,0 +1,24 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <meta http-equiv="pragma" content="no-cache"> <meta http-equiv="cache-control" content="no-cache"> <meta http-equiv="expires" content="0"><link rel="stylesheet" href="./index.css"/>  </head> <body>   <script type="text/javascript" src="./node_modules/three/three.min.js"></script>
+    <script type="text/javascript">
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        var geometry = new THREE.CubeGeometry(1,1,2);
+        var material = new THREE.MeshBasicMaterial({color: '#fff'});
+        var cube = new THREE.Mesh(geometry, material);
+        camera.position.z = 2;
+        scene.add(cube);
+
+        function render() {
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+            window.requestAnimationFrame(render);
+        }
+
+        render();
+
+    </script>
+</body></html>
