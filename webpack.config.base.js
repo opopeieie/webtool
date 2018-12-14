@@ -1,6 +1,5 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
-import path from 'path'
 import webpack from 'webpack'
 const extractLess = new ExtractTextWebpackPlugin({
     filename: '[name]-[contenthash].css',
@@ -35,5 +34,7 @@ export default class WebPackConfig {
             }),
             extractLess
         ];
+
+
     }
 }
