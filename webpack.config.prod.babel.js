@@ -7,7 +7,7 @@ class WebpackDevelopConfig extends WebpackBaseConfig {
     constructor() {
         super();
         this.output = {
-            path: path.resolve(__dirname, 'ao'),
+            path: path.resolve(__dirname, 'BarrageDM-client-new'),
             filename: '[name].[chunkhash].js',
             chunkFilename: '[name].[chunkhash].bundle.js'
         };
