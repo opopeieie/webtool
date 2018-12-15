@@ -25,7 +25,7 @@ class Tool extends Base{
     run() {
         const imgArray = [{key:1,path:bk}, {key:2,path:img2}, {key:3,path:img3}, {key:4,path:img4}, {key:5,path:img5}];
         const socket = io();
-        socket.on('chat message', function(msg){
+        const chat = function(msg) {
             const userInfo = msg.user;
             const message = msg.msg;
             const otherData = msg.otherData;
@@ -35,13 +35,14 @@ class Tool extends Base{
                     base : 'https://twemoji.maxcdn.com/',
                     size: 16
                 }),
-                close:true,
+                close:false,
                 speed:9,
                 color: otherData.textColor === '#000000' ? '#fff' : otherData.textColor
             };
             $('#root').barrager(item);
-        });
+        };
 
+        socket.on('chat message', chat);
         document.onkeydown = function(e) {
             let key = $("#root")[0].dataset.key;
             switch(e.keyCode) {
@@ -68,13 +69,20 @@ class Tool extends Base{
                     })
                     $('#root')[0].dataset.key = indexRight;
                     break;
+                case 80: //pause
+                    $.fn.barrager.removeAll();
+                    socket.off('chat message');
+                    break;
+                case 83:
+                    socket.off('chat message');
+                    socket.on('chat message', chat);
+                    break;
                 default :
-
-
             }
         };
 
         this.leavePage(function() {
+            socket.off('chat message');
             document.onkeydown = null;
         })
 
