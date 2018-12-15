@@ -20,6 +20,7 @@
     "moment": "^2.21.0",
     "socket.io": "2.2.0",
     "three.js": "^0.77.1",
+    "twemoji": "^11.2.0",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {

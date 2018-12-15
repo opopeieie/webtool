@@ -13,7 +13,7 @@ class WebpackDevelopConfig extends WebpackBaseConfig {
         this.devServer = {
             port: 8999,
             proxy: {
-                
+
             }
         };
         this.plugins.push(new webpack.DefinePlugin({

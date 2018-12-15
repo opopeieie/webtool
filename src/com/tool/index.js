@@ -3,6 +3,7 @@ import template from './index.html'
 import Base from '../base'
 import io from 'socket.io-client'
 import '../../lib/jquery.barrager.min'
+import twemoji from 'twemoji'
 import Zhong from './Mr.Zhong.png'
 import bk from './lll/bk.jpg'
 import img2 from './lll/aerial-shot-bird-s-eye-view-daylight-1667003 (2).jpg'
@@ -30,13 +31,17 @@ class Tool extends Base{
             const otherData = msg.otherData;
             const item = {
                 img: userInfo.avatarUrl || Zhong,
-                info: userInfo.nickName + ': ' + message,
+                info: userInfo.nickName + ': ' + twemoji.parse(message, {
+                    base : 'https://twemoji.maxcdn.com/',
+                    size: 16
+                }),
                 close:true,
                 speed:9,
                 color: otherData.textColor === '#000000' ? '#fff' : otherData.textColor
             };
             $('#root').barrager(item);
         });
+
         document.onkeydown = function(e) {
             let key = $("#root")[0].dataset.key;
             switch(e.keyCode) {
