@@ -2,6 +2,7 @@ import './lib/jquery.min'
 import './index.scss'
 import Login from './com/login'
 import Tool from './com/tool'
+import sha256 from 'js-sha256'
 
 
 $(document).ready(() => {
@@ -22,9 +23,29 @@ $(document).ready(() => {
         }else if(view === '') {
             view = 'login'
         }else {
-            if(!window.sessionStorage.getItem('isLogin')) {
-                location.hash = 'login'
+            let user = window.sessionStorage.getItem('user');
+            if(!user) {
+                location.hash = 'login';
+            }else {
+                try {
+                    user = JSON.parse(user);
+                }catch(e){
+                    location.hash = 'login';
+                    return;
+                }
+                let isOk = false;
+                const password = sha256(sha256(user.password));
+                for(let [k,v] of Object.entries(window.user)) {
+                    if(user.userName === k && password === v) {
+                        isOk = true;
+                        break;
+                    }
+                }
+                if(!isOk) {
+                    location.hash = 'login';
+                }
             }
+
         }
         const viewList = view.split('/');
         let obj = views;

@@ -25,10 +25,11 @@ class Login extends Base{
         $('#loginBtn').on('click', function() {
             let userNameVal = $('#username').val();
             let password = $('#password').val();
+            let oldPassword = password;
             password = sha256(sha256(password));
             for(let [k,v] of Object.entries(window.user)) {
                 if(userNameVal === k && password === v) {
-                    sessionStorage.setItem('isLogin', true)
+                    sessionStorage.setItem('user', JSON.stringify({userName:userNameVal,password:oldPassword}));
                     self.goTo('main');
                     return;
                 }
