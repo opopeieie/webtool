@@ -13,7 +13,11 @@ class WebpackDevelopConfig extends WebpackBaseConfig {
         this.devServer = {
             port: 8999,
             proxy: {
-
+                "/" : {
+                    target: "http://127.0.0.1:5757",
+                    changeOrigin: true,
+                    secure: false
+                }
             }
         };
         this.plugins.push(new webpack.DefinePlugin({

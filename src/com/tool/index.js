@@ -73,10 +73,28 @@ class Tool extends Base{
                 case 80: //pause
                     $.fn.barrager.removeAll();
                     socket.off('chat message');
+                    $.ajax({
+                        url: '/weapp/sendStatus',
+                        contentType: "application/json",
+                        dataType: "json",
+                        method: 'POST',
+                        data: JSON.stringify({
+                            message: 'pause'
+                        })
+                    });
                     break;
                 case 83:
                     socket.off('chat message');
                     socket.on('chat message', chat);
+                    $.ajax({
+                        url: '/weapp/sendStatus',
+                        contentType: "application/json",
+                        dataType: "json",
+                        method: 'POST',
+                        data: JSON.stringify({
+                            message: 'start'
+                        })
+                    });
                     break;
 
                 case 49: //1
