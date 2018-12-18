@@ -44,6 +44,7 @@ class Tool extends Base{
 
         socket.on('chat message', chat);
         document.onkeydown = function(e) {
+            console.log(e);
             let key = $("#root")[0].dataset.key;
             switch(e.keyCode) {
                 case 67: //c
@@ -76,6 +77,18 @@ class Tool extends Base{
                 case 83:
                     socket.off('chat message');
                     socket.on('chat message', chat);
+                    break;
+
+                case 49: //1
+                    $('iframe').remove();
+                    break;
+                case 50: //2
+                    $('iframe').remove();
+                    // $('#root').append($('<iframe id=\'iframe\' class="iframe-ppt" src="/ppt1" name=\'iframe\' frameborder="0" width="100%" ></iframe>'));
+                    break;
+                case 51: //3
+                    $('iframe').remove();
+                    // $('#root').append($('<iframe id=\'iframe\' class="iframe-ppt" src="/ppt2" name=\'iframe\' frameborder="0" width="100%" ></iframe>'))
                     break;
                 default :
             }

@@ -19,7 +19,9 @@ class WebpackDevelopConfig extends WebpackBaseConfig {
             IS_PRODUCTION: true
         }), new webpack.optimize.UglifyJsPlugin({
             sourceMap: false
-        }), /* new BundleAnalyzerPlugin() */);
+        })
+
+            /* new BundleAnalyzerPlugin() */);
     }
 }
 
