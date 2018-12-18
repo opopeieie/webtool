@@ -6,10 +6,7 @@ import '../../lib/jquery.barrager.min'
 import twemoji from 'twemoji'
 import Zhong from './Mr.Zhong.png'
 import bk from './lll/bk.jpg'
-import img2 from './lll/aerial-shot-bird-s-eye-view-daylight-1667003 (2).jpg'
-import img3 from './lll/android-wallpaper-back-view-boat-531474.jpg'
-import img4 from './lll/bird-s-eye-view-cold-daylight-1679718.jpg'
-import img5 from './lll/bridge-cars-daylight-1681392.jpg'
+import img6 from './lll/017A7032B3A343AB431B4043DD586E78.png'
 
 class Tool extends Base{
     constructor() {
@@ -23,7 +20,7 @@ class Tool extends Base{
 
 
     run() {
-        const imgArray = [{key:1,path:bk}, {key:2,path:img2}, {key:3,path:img3}, {key:4,path:img4}, {key:5,path:img5}];
+        const imgArray = [{key:1,path:bk}, {key:2,path:img6}];
         const socket = io();
         const chat = function(msg) {
             const userInfo = msg.user;
