@@ -6,7 +6,16 @@ import '../../lib/jquery.barrager.min'
 import twemoji from 'twemoji'
 import Zhong from './Mr.Zhong.png'
 import bk from './lll/bk.jpg'
-import img6 from './lll/017A7032B3A343AB431B4043DD586E78.png'
+import img2 from './lll/tanpan_2.jpg'
+import img3 from './lll/huluwa_3.1.png'
+import img4 from './lll/huluwa_3.2.png'
+import img5 from './lll/huluwa_3.3.png'
+import img6 from './lll/huluwa_3.4.png'
+import img7 from './lll/huluwa_3.5.png'
+import img8 from './lll/huluwa_3.6.png'
+import img9 from './lll/othere_4.jpg'
+
+
 
 class Tool extends Base{
     constructor() {
@@ -20,7 +29,7 @@ class Tool extends Base{
 
 
     run() {
-        const imgArray = [{key:1,path:bk}, {key:2,path:img6}];
+        const imgArray = [{key:1,path:bk}, {key:2,path:img2}, {key:3,path:img3}, {key:4,path:img4}, {key:5,path:img5}, {key:6,path:img6}, {key:7,path:img7}, {key:8,path:img8}, {key:9,path:img9}];
         const socket = io();
         const chat = function(msg) {
             const userInfo = msg.user;
@@ -41,7 +50,6 @@ class Tool extends Base{
 
         socket.on('chat message', chat);
         document.onkeydown = function(e) {
-            console.log(e);
             let key = $("#root")[0].dataset.key;
             switch(e.keyCode) {
                 case 67: //c
@@ -52,20 +60,18 @@ class Tool extends Base{
                     if(indexLeft< 0) {
                         indexLeft = imgArray.length - 1;
                     }
-                    $('#root').css({
-                        'background-image': 'url('+imgArray[indexLeft].path+')'
-                    });
-                    $('#root')[0].dataset.key = indexLeft;
+
+                    caseImg(key, indexLeft)
+
                     break;
                 case 39: //right
                     let indexRight = ++key;
                     if(indexRight> imgArray.length - 1) {
                         indexRight = 0;
                     }
-                    $('#root').css({
-                        'background-image': 'url('+imgArray[indexRight].path+')'
-                    })
-                    $('#root')[0].dataset.key = indexRight;
+
+                    caseImg(key, indexRight)
+
                     break;
                 case 80: //pause
                     $.fn.barrager.removeAll();
@@ -94,20 +100,32 @@ class Tool extends Base{
                     });
                     break;
 
-                case 49: //1
-                    $('iframe').remove();
-                    break;
-                case 50: //2
-                    $('iframe').remove();
-                    // $('#root').append($('<iframe id=\'iframe\' class="iframe-ppt" src="/ppt1" name=\'iframe\' frameborder="0" width="100%" ></iframe>'));
-                    break;
-                case 51: //3
-                    $('iframe').remove();
-                    // $('#root').append($('<iframe id=\'iframe\' class="iframe-ppt" src="/ppt2" name=\'iframe\' frameborder="0" width="100%" ></iframe>'))
-                    break;
                 default :
             }
         };
+
+        function caseImg(key ,index) {
+            console.log(key)
+            switch(key) {
+                case 9:
+                case 0:
+                    $('#root').css({
+                        'background-image': 'url('+imgArray[index].path+')',
+                        'background-size': '100% 100%'
+                    });
+                    break;
+                default:
+                    $('#root').css({
+                        'background-image': 'url('+imgArray[index].path+')',
+                        'background-size': 'contain',
+                        'background-repeat': 'no-repeat',
+                        'background-position-x': '50%',
+                        'background-position-y': '50%'
+                    })
+                    break;
+            }
+            $('#root')[0].dataset.key = index;
+        }
 
         this.leavePage(function() {
             socket.off('chat message');
