@@ -41,6 +41,7 @@ class Tool extends Base{
                     base : 'https://twemoji.maxcdn.com/',
                     size: 16
                 }),
+                href: 'javascript:void(0)',
                 close:false,
                 speed:9,
                 color: otherData.textColor === '#000000' ? '#fff' : otherData.textColor
@@ -105,7 +106,6 @@ class Tool extends Base{
         };
 
         function caseImg(key ,index) {
-            $('.bulb').hide();
             $('.samples').hide().fadeIn();
             switch(index) {
                 case 9:
@@ -117,9 +117,9 @@ class Tool extends Base{
                     });
                     break;
                 case (imgArray.length - 1) :
-                    $('.samples').hide();
-                    $('.bulb').fadeIn();
-
+                    $('#root').css({
+                        'background-image': 'linear-gradient(45deg, rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 100%)'
+                    });
                     break;
                 default:
                     $('#root').css({
