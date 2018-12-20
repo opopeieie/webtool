@@ -13,7 +13,7 @@ import img5 from './lll/huluwa_3.3.png'
 import img6 from './lll/huluwa_3.4.png'
 import img7 from './lll/huluwa_3.5.png'
 import img8 from './lll/huluwa_3.6.png'
-import img9 from './lll/othere_4.jpg'
+import img9 from './lll/other_4.jpg'
 
 
 
@@ -29,7 +29,7 @@ class Tool extends Base{
 
 
     run() {
-        const imgArray = [{key:1,path:bk}, {key:2,path:img2}, {key:3,path:img3}, {key:4,path:img4}, {key:5,path:img5}, {key:6,path:img6}, {key:7,path:img7}, {key:8,path:img8}, {key:9,path:img9}];
+        const imgArray = [bk, img2, bk, img3, img4, img5, img6, img7, img8,bk, img9, 'light'];
         const socket = io();
         const chat = function(msg) {
             const userInfo = msg.user;
@@ -66,7 +66,7 @@ class Tool extends Base{
                     break;
                 case 39: //right
                     let indexRight = ++key;
-                    if(indexRight> imgArray.length - 1) {
+                    if(indexRight> imgArray.length -1) {
                         indexRight = 0;
                     }
 
@@ -105,18 +105,25 @@ class Tool extends Base{
         };
 
         function caseImg(key ,index) {
-            console.log(key)
-            switch(key) {
+            $('.bulb').hide();
+            $('.samples').show();
+            switch(index) {
                 case 9:
+                case 2:
                 case 0:
                     $('#root').css({
-                        'background-image': 'url('+imgArray[index].path+')',
+                        'background-image': 'url('+imgArray[index]+')',
                         'background-size': '100% 100%'
                     });
                     break;
+                case (imgArray.length - 1) :
+                    $('.samples').hide();
+                    $('.bulb').fadeIn();
+
+                    break;
                 default:
                     $('#root').css({
-                        'background-image': 'url('+imgArray[index].path+')',
+                        'background-image': 'url('+imgArray[index]+')',
                         'background-size': 'contain',
                         'background-repeat': 'no-repeat',
                         'background-position-x': '50%',
