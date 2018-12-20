@@ -106,7 +106,7 @@ class Tool extends Base{
 
         function caseImg(key ,index) {
             $('.bulb').hide();
-            $('.samples').show();
+            $('.samples').hide().fadeIn();
             switch(index) {
                 case 9:
                 case 2:
