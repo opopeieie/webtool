@@ -39,11 +39,11 @@ class Tool extends Base{
                 img: userInfo.avatarUrl || Zhong,
                 info: userInfo.nickName + ': ' + twemoji.parse(message, {
                     base : 'https://twemoji.maxcdn.com/',
-                    size: 16
+                    size: 36
                 }),
                 href: 'javascript:void(0)',
                 close:false,
-                speed:9,
+                speed:12,
                 color: otherData.textColor === '#000000' ? '#fff' : otherData.textColor
             };
             $('#main').barrager(item);
