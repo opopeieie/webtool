@@ -45,7 +45,7 @@ class Tool extends Base{
                 speed:9,
                 color: otherData.textColor === '#000000' ? '#fff' : otherData.textColor
             };
-            $('#root').barrager(item);
+            $('#main').barrager(item);
         };
 
         socket.on('chat message', chat);
