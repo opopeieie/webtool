@@ -57,21 +57,24 @@ class Tool extends Base{
                     $.fn.barrager.removeAll();
                     break;
                 case 37: //left
-                    let indexLeft = --key;
-                    if(indexLeft< 0) {
-                        indexLeft = imgArray.length - 1;
-                    }
+                    // let indexLeft = --key;
+                    // if(indexLeft< 0) {
+                    //     indexLeft = imgArray.length - 1;
+                    // }
 
-                    caseImg(key, indexLeft)
+                    // caseImg(key, indexLeft)
+                    
+                    
 
                     break;
                 case 39: //right
-                    let indexRight = ++key;
-                    if(indexRight> imgArray.length -1) {
-                        indexRight = 0;
-                    }
+                    // let indexRight = ++key;
+                    // if(indexRight> imgArray.length -1) {
+                    //     indexRight = 0;
+                    // }
 
-                    caseImg(key, indexRight)
+                    // caseImg(key, indexRight)
+                    
 
                     break;
                 case 80: //pause
